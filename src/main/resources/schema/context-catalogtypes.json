@@ -1,0 +1,373 @@
+{
+    "data": {
+        "items": [
+            {
+                "lang": "en",
+                "category": "context-type",
+                "documentation": "Context that is added whenever users make a Get POI request in the Location-based Services. Contains information such as geographical location and category for the search.",
+                "valueSchema": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "name": {
+                            "required": false,
+                            "type": "string",
+                            "description": "name"
+                        },
+                        "source_domain": {
+                            "required": false,
+                            "type": "string",
+                            "description": "Target service for the search E.g: google, tripIt"
+                        },
+                        "value": {
+                            "required": false,
+                            "type": "string",
+                            "description": "Search used to perform the search"
+                        },
+                        "datetime": {
+                            "required": false,
+                            "type": "string",
+                            "description": "Date and time when the search was performed in local format including timezone",
+                            "format": "date-time"
+                        },
+                        "location": {
+                            "additionalProperties": false,
+                            "required": true,
+                            "properties": {
+                                "lat": {
+                                    "required": true,
+                                    "minimum": -90.0,
+                                    "type": "number",
+                                    "description": "Latitude where the search was performed",
+                                    "maximum": 90.0
+                                },
+                                "lon": {
+                                    "required": true,
+                                    "minimum": -180.0,
+                                    "type": "number",
+                                    "description": "Longitude where the search was performed",
+                                    "maximum": 180.0
+                                }
+                            }
+                        },
+                        "type": {
+                            "required": false,
+                            "type": "string",
+                            "description": "Type of search. E.g: travel, dinning,"
+                        }
+                    }
+                },
+                "shortName": "Point of interest search history",
+                "identifier": "urn:x-intel:context:type:search"
+            },
+            {
+                "lang": "en",
+                "category": "context-type",
+                "documentation": "Context that is added whenever users make a Get Route request in the Location-based Services. This type can also be used to report a route that was traveled by an end user.",
+                "valueSchema": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "origin": {
+                            "required": true,
+                            "properties": {
+                                "location": {
+                                    "additionalProperties": false,
+                                    "required": true,
+                                    "properties": {
+                                        "lat": {
+                                            "required": true,
+                                            "minimum": -90.0,
+                                            "type": "number",
+                                            "description": "Originating Latitude",
+                                            "maximum": 90.0
+                                        },
+                                        "lon": {
+                                            "required": true,
+                                            "minimum": -180.0,
+                                            "type": "number",
+                                            "description": "Originating Longitude",
+                                            "maximum": 180.0
+                                        }
+                                    }
+                                },
+                                "datetime": {
+                                    "required": true,
+                                    "type": "string",
+                                    "description": "Date and time of origin of the route",
+                                    "format": "date-time"
+                                }
+                            }
+                        },
+                        "routeAlgorithm": {
+                            "required": false,
+                            "type": "string",
+                            "description": "Type of algorithm to use for calculating route, e.g., FASTEST (driving) (default),SHORTEST (driving), PEDESTRIAN. These are case-sensitive parameters and must be entered exactly as shown.",
+                            "enum": [
+                                "FASTEST",
+                                "SHORTEST",
+                                "PEDESTRIAN"
+                            ]
+                        },
+                        "avoid": {
+                            "items": {
+                                "enum": [
+                                    "FERRY",
+                                    "HIGHWAY",
+                                    "TOLLWAY",
+                                    "UNPAVED"
+                                ],
+                                "type": "string"
+                            },
+                            "required": false,
+                            "type": "array",
+                            "description": "A list of road types to avoid, e.g., FERRY, HIGHWAY, TOLLWAY, UNPAVED. These are case-sensitive parameters and must be entered exactly as shown."
+                        },
+                        "destination": {
+                            "required": true,
+                            "properties": {
+                                "location": {
+                                    "additionalProperties": false,
+                                    "required": true,
+                                    "properties": {
+                                        "lat": {
+                                            "required": true,
+                                            "minimum": -90.0,
+                                            "type": "number",
+                                            "description": "Destination Latitude",
+                                            "maximum": 90.0
+                                        },
+                                        "lon": {
+                                            "required": true,
+                                            "minimum": -180.0,
+                                            "type": "number",
+                                            "description": "Destination Longitude",
+                                            "maximum": 180.0
+                                        }
+                                    }
+                                },
+                                "datetime": {
+                                    "required": true,
+                                    "type": "string",
+                                    "description": "Date and time of destination of the route",
+                                    "format": "date-time"
+                                }
+                            }
+                        },
+                        "zoom": {
+                            "required": false,
+                            "type": "number",
+                            "description": "The service uses this value to set the polyline simplification to reduce the number of points returned"
+                        },
+                        "preferred": {
+                            "items": {
+                                "enum": [
+                                    "FERRY",
+                                    "HIGHWAY",
+                                    "TOLLWAY",
+                                    "UNPAVED"
+                                ],
+                                "type": "string"
+                            },
+                            "required": false,
+                            "type": "array",
+                            "description": "A list of preferred road types, e.g., FERRY, HIGHWAY, TOLLWAY, UNPAVED. These are case-sensitive parameters and must be entered exactly as shown."
+                        },
+                        "measurement": {
+                            "required": false,
+                            "type": "string",
+                            "description": "Imperial or metric, e.g., METRIC (default), IMPERIAL, IMPERIAL_FEET. These are case-sensitive parameters and must be entered exactly as shown.",
+                            "enum": [
+                                "METRIC",
+                                "IMPERIAL",
+                                "IMPERIAL_FEET"
+                            ]
+                        },
+                        "alt": {
+                            "required": false,
+                            "type": "string",
+                            "description": "Prefered response type json or xml",
+                            "enum": [
+                                "json",
+                                "xml"
+                            ]
+                        },
+                        "trafficAware": {
+                            "required": false,
+                            "type": "boolean",
+                            "description": "Boolean to request that route information include traffic conditions."
+                        },
+                        "viaPoints": {
+                            "items": {
+                                "additionalProperties": false,
+                                "properties": {
+                                    "lat": {
+                                        "required": true,
+                                        "minimum": -90.0,
+                                        "type": "number",
+                                        "description": "Point Latitude",
+                                        "maximum": 90.0
+                                    },
+                                    "lon": {
+                                        "required": true,
+                                        "minimum": -180.0,
+                                        "type": "number",
+                                        "description": "Point Longitude",
+                                        "maximum": 180.0
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "type": "array",
+                            "description": "Ensure route includes indicated coordinate points"
+                        }
+                    }
+                },
+                "shortName": "Navigation routing history",
+                "identifier": "urn:x-intel:context:type:location:route"
+            },
+            {
+                "lang": "en",
+                "category": "context-type",
+                "documentation": "Records visits to points of interest reported either through manual check ins or because the POI is  automatically detected by an application.",
+                "valueSchema": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "location": {
+                            "additionalProperties": false,
+                            "required": true,
+                            "properties": {
+                                "lat": {
+                                    "required": true,
+                                    "minimum": -90.0,
+                                    "type": "number",
+                                    "description": "Latitude when the checkin was performed",
+                                    "maximum": 90.0
+                                },
+                                "lon": {
+                                    "required": true,
+                                    "minimum": -180.0,
+                                    "type": "number",
+                                    "description": "Longitude when the checkin was performed ",
+                                    "maximum": 180.0
+                                },
+                                "accuracy": {
+                                    "required": true,
+                                    "type": "number",
+                                    "description": "Lat, Lon accuracy"
+                                }
+                            }
+                        },
+                        "pointId": {
+                            "required": true,
+                            "type": "string",
+                            "description": "Internal identifier of the Point of Interest"
+                        },
+                        "datetime": {
+                            "required": true,
+                            "type": "string",
+                            "description": "Date and time of start the route",
+                            "format": "date-time"
+                        }
+                    }
+                },
+                "shortName": "Point of interest check-ins and visits",
+                "identifier": "urn:x-intel:context:type:location:checkin"
+            },
+            {
+                "lang": "en",
+                "category": "context-type",
+                "documentation": "Current location reported by the application. This context is typically gathered using the device's location capabilities.",
+                "valueSchema": {
+                    "additionalProperties": false,
+                    "type": "object",
+                    "properties": {
+                        "altitude": {
+                            "required": false,
+                            "type": "number",
+                            "description": "Altitude in meters."
+                        },
+                        "longitude": {
+                            "required": true,
+                            "minimum": -180,
+                            "type": "number",
+                            "description": "Longitude in decimal degrees.",
+                            "maximum": 180
+                        },
+                        "latitude": {
+                            "required": true,
+                            "minimum": -90,
+                            "type": "number",
+                            "description": "Latitude in decimal degrees.",
+                            "maximum": 90
+                        },
+                        "altitudeAccuracy": {
+                            "minimum": 0,
+                            "type": "number",
+                            "description": "Estimated accuracy of reported altitude in meters.",
+                            "required": false
+                        },
+                        "speed": {
+                            "minimum": 0,
+                            "type": "number",
+                            "description": "Ground speed in meters per second.",
+                            "required": false
+                        },
+                        "heading": {
+                            "required": false,
+                            "minimum": 0,
+                            "type": "number",
+                            "description": "Direction in decimal degree measured in a clockwise direction starting at true north.",
+                            "maximum": 360
+                        },
+                        "accuracy": {
+                            "minimum": 0,
+                            "type": "number",
+                            "description": "Estimated accuracy of reported latitude,longitude coordinate in meters.",
+                            "required": false
+                        }
+                    }
+                },
+                "shortName": "Current Location",
+                "identifier": "urn:x-intel:context:type:location:current"
+            },
+            {
+                "lang": "en",
+                "category": "context-type",
+                "documentation": "Records a user's \"like\" or rating events (such as \"+1\") on social networks.",
+                "valueSchema": {
+                    "additionalProperties": false,
+                    "type": "object",
+                    "properties": {
+                        "rating": {
+                            "minimum": 0,
+                            "type": "integer",
+                            "required": false
+                        },
+                        "target": {
+                            "additionalProperties": false,
+                            "required": true,
+                            "type": "object",
+                            "properties": {
+                                "domain": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "shortName": "Likes & Ratings",
+                "identifier": "urn:x-intel:context:type:rating"
+            },
+            {
+                "lang": "en",
+                "category": "model",
+                "documentation": "Models created to predict a user's future behavior",
+                "valueSchema": {},
+                "shortName": "Behavioral Model",
+                "identifier": "urn:x-intel:context:behaviormodel"
+            }
+        ]
+    }
+}

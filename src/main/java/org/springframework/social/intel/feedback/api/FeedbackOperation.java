@@ -13,8 +13,8 @@ public interface FeedbackOperation {
 	
 	/**
 	 * This operation registers the acceptance of a proposed relation between
-	 * two items. A Score is required to be sent for a recommendation’s
-	 * relations (cross-sell, up-sell) to be used as recommendation’s feedback
+	 * two items. A Score is required to be sent for a recommendations
+	 * relations (cross-sell, up-sell) to be used as recommendations feedback
 	 * for the Engine.
 	 * 
 	 * @param item1
@@ -26,8 +26,8 @@ public interface FeedbackOperation {
 	
 	/**
 	 * Registers the rejection of a proposed relation between two items. A Score
-	 * is required to be sent for recommendation’s relations (cross-sell,
-	 * up-sell) to be used as recommendation’s feedback for the Engine.
+	 * is required to be sent for recommendations relations (cross-sell,
+	 * up-sell) to be used as recommendations feedback for the Engine.
 	 * 
 	 * @param itemId
 	 * @param itemId2
@@ -39,7 +39,7 @@ public interface FeedbackOperation {
 	void rejectUpSell(String itemId, String itemId2);
 	
 	/**
-	 * Registers a user’s event specific of the Api key. There may be other
+	 * Registers a users event specific of the Api key. There may be other
 	 * events that can be collected in order to feed the recommendation engine.
 	 * This Api validates that the action type has been created before
 	 * registering a generic action. Please, notice that the Api depends on the
@@ -125,7 +125,7 @@ public interface FeedbackOperation {
 	void visit(String itemId);
 	
 	/**
-	 * Registers a user’s review on an item.
+	 * Registers a users review on an item.
 	 * @param itemId
 	 */
 	//PUT https://api.intel.com/re/v1/feedback/{userId}/review/{itemId}
@@ -166,11 +166,11 @@ public interface FeedbackOperation {
 //	RESPONSE { "Data": { "rate": [ { "_id": "1df244e7fc1a4290b72b110051ebe091",
 //		"X-ApiKey": "F0399437-FD0C-4A48-B101-F0314A6172E4", "UserId":
 //		"7ACCDA7E-A82C-4C95-B41E-1140C63726C7", "ActionType": "rate",
-//		"ItemId": "books.3454444", “Rate”: “3”,
+//		"ItemId": "books.3454444", Rate: 3,
 //		"Context": { "_id": "ef67da9a40a646e1abba4a5312f2bdd6",
-//		“Mood”: “A Mood Description”,
-//		“Current Location”: “A Location
-//		information”, "Current Activiy": "default", "X-ApiKey":
+//		Mood: A Mood Description,
+//		Current Location: A Location
+//		information, "Current Activiy": "default", "X-ApiKey":
 //		"F0399437-FD0C-4A48-B101-F0314A6172E4", "UserId":
 //		"7ACCDA7E-A82C-4C95-B41E-1140C63726C7" }, "ActionPayload": { }
 //		}, ] } , "Meta": { "Paging": { "TotalItems": 1, "Limit": 50,

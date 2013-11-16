@@ -27,7 +27,7 @@ public class CatalogOperationImpl extends Base2leggedService implements CatalogO
 		getTemp().postForObject(url, "", String.class);
 	}
 	
-//	POST https://api.intel.com/catalog/v1/{item_type’s plural name}
+//	POST https://api.intel.com/catalog/v1/{item_types plural name}
 // Request Data	
 //	{
 //		"Items": [
@@ -74,7 +74,7 @@ public class CatalogOperationImpl extends Base2leggedService implements CatalogO
 		return (String)al.get(0);
 	}
 
-	//PUT https://api.intel.com/catalog/v1/{item_type’s plural name}
+	//PUT https://api.intel.com/catalog/v1/{item_types plural name}
 		/*
 		 {
 			"ItemId": "db4f3f7d-b9d7-480d-9eaf-721d3baaae95",

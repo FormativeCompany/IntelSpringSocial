@@ -374,9 +374,9 @@ ERROR
 	
 	/* ERROR
 	 {
-		“code” : “XXX-nnnnn”,
-		“transactionid”: “c962fe29-d4e8-11e1-bd04-0050568c00f9”,
-		“message” : “Description of error message”
+		code : XXX-nnnnn,
+		transactionid: c962fe29-d4e8-11e1-bd04-0050568c00f9,
+		message : Description of error message
 	 }
 	 */
 	

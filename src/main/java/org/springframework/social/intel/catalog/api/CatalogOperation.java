@@ -7,7 +7,7 @@ import java.util.Map;
 public interface CatalogOperation {
 	public void testRefresh();
 	
-//	POST https://api.intel.com/catalog/v1/{item_type’s plural name}
+//	POST https://api.intel.com/catalog/v1/{item_types plural name}
 //	POST https://api.intel.com/catalog/v1/books	
 	public void createItemType(String name);
 	
@@ -53,7 +53,7 @@ public interface CatalogOperation {
 //		}
 	
 	
-	//https://api.intel.com/catalog/v1/{item_type’s plural name}
+	//https://api.intel.com/catalog/v1/{item_types plural name}
 	public List<Map<?,?>> listItemType();
 	
 	
@@ -118,10 +118,10 @@ public interface CatalogOperation {
 //		   }
 //
 //		}
-	//GET https://api.intel.com/catalog/v1/{item_type’s plural name}
+	//GET https://api.intel.com/catalog/v1/{item_types plural name}
 	public List<Map<?,?>> getItem(String name);
 	
-//	POST https://api.intel.com/catalog/v1/{item_type’s plural name}
+//	POST https://api.intel.com/catalog/v1/{item_types plural name}
 // Request Data	
 //	{
 //		"Items": [
@@ -149,13 +149,13 @@ public interface CatalogOperation {
 	/**
 	 * Create or Update a list of items in the catalog of a particular Item
 	 * Type. This operation is based on simple convention that works under two
-	 * modes (for managing Item’s Id):
+	 * modes (for managing Items Id):
 	 * 
-	 * • All Items on the list include the Item Id sending the "ItemId"
+	 *  All Items on the list include the Item Id sending the "ItemId"
 	 * attribute: This is when the Item Id is identified to be universal, and it
 	 * won't be used again for another item.
 	 * 
-	 * • None of the Items in the list include the "ItemId" field: This is the
+	 *  None of the Items in the list include the "ItemId" field: This is the
 	 * case the Application want the Catalog Services to create and register an
 	 * Item with a generated universall Id for it.
 	 * 
@@ -169,7 +169,7 @@ public interface CatalogOperation {
 	 */
 	public String createItems(String name, Map<String, Object> object);
 	
-	//PUT https://api.intel.com/catalog/v1/{item_type’s plural name}
+	//PUT https://api.intel.com/catalog/v1/{item_types plural name}
 	/*
 	 {
 		"ItemId": "db4f3f7d-b9d7-480d-9eaf-721d3baaae95",
@@ -224,7 +224,7 @@ public interface CatalogOperation {
 	}
 	]
 	},
-	| Intel® Cloud Services Platform beta Catalog Services REST Developer Guide | 12
+	| Intel Cloud Services Platform beta Catalog Services REST Developer Guide | 12
 	"Meta": {
 	"Paging": {
 	"TotalItems": 2,
